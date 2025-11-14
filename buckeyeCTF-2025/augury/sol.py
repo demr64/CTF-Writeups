@@ -1,14 +1,13 @@
-# decrypt_png_by_known_header.py
 from pathlib import Path
 
-MULT = 3404970675
-INCR = 3553295105
-MOD = 2**32
+x = 3404970675
+b = 3553295105
+mod = 2**32
 
 PNG_SIG = bytes([0x89, 0x50, 0x4E, 0x47])
 
 def generate_keystream(i):
-    return (i * MULT + INCR) % MOD
+    return (i * x + b) % mod
 
 def decrypt_from_hex(hexdata: str, out_path: str = "recovered.png"):
     data = bytearray(bytes.fromhex(hexdata.strip()))
