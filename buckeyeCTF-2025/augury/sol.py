@@ -9,7 +9,7 @@ PNG_SIG = bytes([0x89, 0x50, 0x4E, 0x47])
 def generate_keystream(i):
     return (i * x + b) % mod
 
-def decrypt_from_hex(hexdata: str, out_path: str = "recovered.png"):
+def decrypt_from_hex(hexdata):
     data = bytearray(bytes.fromhex(hexdata.strip()))
     p0 = PNG_SIG[0:4]
     c0 = bytes(data[0:4])
@@ -24,10 +24,10 @@ def decrypt_from_hex(hexdata: str, out_path: str = "recovered.png"):
             data[i + j] ^= key_bytes[j]
         ks = generate_keystream(ks)
 
-    Path(out_path).write_bytes(data)
+    Path("recovered.png").write_bytes(data)
 
 if __name__ == "__main__":
     with open("secret_pic.txt", "r") as f:
         h = f.readline()
     decrypt_from_hex(h)
-
+    
