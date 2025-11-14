@@ -1,9 +1,9 @@
 from pwn import *
 
-HOST = "cube-cipher.challs.pwnoh.io"
-PORT = 1337 
+host = "cube-cipher.challs.pwnoh.io"
+port = 1337 
 def attempt(payload):
-    p = remote(HOST, PORT, timeout=3, ssl=True)
+    p = remote(host, port, timeout=3, ssl=True)
     for i in range(0, 100):
         p.recvuntil(b'Option: ')
         p.sendline(b'4')
