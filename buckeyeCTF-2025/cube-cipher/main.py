@@ -8,9 +8,7 @@ def attempt(payload):
         p.recvuntil(b'Option: ')
         p.sendline(b'4')
         p.recvuntil(b'Option: ')
-
         p.sendline(payload)
-        
         data = b""
         while True:
             chunk = p.recv(128)  
