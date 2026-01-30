@@ -1,2 +1,2 @@
 # CTF-Writeups
-This repository contains my solutions of CTF challenges from various competitions.
+This repository contains some of my favourite solutions I wrote from various Capture The Flag competitions.
